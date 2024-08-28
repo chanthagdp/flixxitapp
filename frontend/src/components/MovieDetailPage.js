@@ -25,14 +25,14 @@ const MovieDetailPage = ({ handleLike, handleDislike }) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`https://flixxit-h9fa.onrender.com/api/movies/${id}`);
+        const response = await axios.get(`/api/movies/${id}`);
         const movieData = response.data;
         setMovie(movieData);
 
         // Fetch likes and dislikes
-        const likesResponse = await axios.get(`https://flixxit-h9fa.onrender.com/api/movies/${id}/likes`);
+        const likesResponse = await axios.get(`/api/movies/${id}/likes`);
         const likesCount = likesResponse.data.likes;
-        const dislikesResponse = await axios.get(`https://flixxit-h9fa.onrender.com/api/movies/${id}/dislikes`);
+        const dislikesResponse = await axios.get(`/api/movies/${id}/dislikes`);
         const dislikesCount = dislikesResponse.data.dislikes;
 
         movieData.likes = likesCount;
@@ -62,7 +62,7 @@ const MovieDetailPage = ({ handleLike, handleDislike }) => {
     const fetchRecommendedMovies = async (currentMovie) => {
       try {
         // Fetch all movies from the API
-        const response = await axios.get(`https://flixxit-h9fa.onrender.com/api/movies`);
+        const response = await axios.get(`/api/movies`);
         const allMovies = response.data;
 
         // Filter movies by the same genre and exclude the current movie
@@ -79,7 +79,7 @@ const MovieDetailPage = ({ handleLike, handleDislike }) => {
 
     const fetchComments = async (movieId) => {
       try {
-        const response = await axios.get(`https://flixxit-h9fa.onrender.com/api/movies/${movieId}/comments`);
+        const response = await axios.get(`/api/movies/${movieId}/comments`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -88,7 +88,7 @@ const MovieDetailPage = ({ handleLike, handleDislike }) => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://flixxit-h9fa.onrender.com/api/users");
+        const response = await axios.get("/api/users");
         setUsers(response.data);
       } catch (err) {
         console.error("Error fetching users:", err);
@@ -218,7 +218,7 @@ const MovieDetailPage = ({ handleLike, handleDislike }) => {
 
     try {
       const response = await axios.post(
-        `https://flixxit-h9fa.onrender.com/api/movies/${movie._id}/comments`,
+        `/api/movies/${movie._id}/comments`,
         commentPayload,
         { headers: { Authorization: `Bearer ${token}` } }
       );

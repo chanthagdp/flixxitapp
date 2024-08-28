@@ -41,7 +41,7 @@ const AdminDashboard = () => {
       };
 
       try {
-        const response = await axios.post('https://flixxit-h9fa.onrender.com/api/movies', formattedData);
+        const response = await axios.post('/api/movies', formattedData);
         setMessage({ type: 'success', text: 'Movie added successfully!' });
         setFormData({
           title: '',

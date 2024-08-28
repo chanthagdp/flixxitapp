@@ -3,7 +3,7 @@ module.exports = (client, app, authenticate, createTextIndex, ObjectId) => {
     // Movies
     app.get("/api/movies", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const movies = await database.collection("movies");
             const { genre, page = 1, limit = 1000 } = req.query;
 
@@ -40,7 +40,7 @@ module.exports = (client, app, authenticate, createTextIndex, ObjectId) => {
     app.get('/api/movies/genre/:genre', async (req, res) => {
         const { genre } = req.params;
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const movies = await database.collection("movies");
             // Find movies by genre using MongoDB query
             const filteredMovies = await movies.find({ genre }).toArray();
@@ -63,7 +63,7 @@ module.exports = (client, app, authenticate, createTextIndex, ObjectId) => {
         };
 
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const movies = database.collection("movies");
             const result = await movies.insertOne(movie);
 
@@ -77,7 +77,7 @@ module.exports = (client, app, authenticate, createTextIndex, ObjectId) => {
     // Movie detail
     app.get("/api/movies/:id", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const movies = database.collection("movies");
             const movie = await movies.findOne({ _id: new ObjectId(req.params.id) });
             if (!movie) {
@@ -96,7 +96,7 @@ module.exports = (client, app, authenticate, createTextIndex, ObjectId) => {
         const query = req.query.query || "";
 
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const movies = database.collection("movies");
             const searchRegex = new RegExp(query, "i");
             const results = await movies.find({ title: { $regex: searchRegex } }).toArray();
@@ -115,7 +115,7 @@ module.exports = (client, app, authenticate, createTextIndex, ObjectId) => {
     app.get("/api/movies/interacted", authenticate, async (req, res) => {
         try {
             const userId = req.user._id; // Extract user ID from authenticated user
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
 
             const likes = database.collection("likes");
             const dislikes = database.collection("dislikes");

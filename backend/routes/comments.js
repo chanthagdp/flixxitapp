@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (client, app, authenticate, ObjectId) => {
-    const database = client.db("sample_mflix");
+    const database = client.db("auppFlixxitDb");
     const comments = database.collection("comments");
     const users = database.collection("users");
 

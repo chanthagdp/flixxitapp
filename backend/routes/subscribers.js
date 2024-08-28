@@ -3,7 +3,7 @@ module.exports = (client, app, ObjectId) => {
     // Subscription 
     app.post("/api/subscribe", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const { userId } = req.body;
 
@@ -24,7 +24,7 @@ module.exports = (client, app, ObjectId) => {
         try {
             const { userId, genre } = req.body;
 
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
 
             const result = await users.updateOne(

@@ -19,7 +19,7 @@ const MovieCategories = () => {
             setError(null);
 
             try {
-                const response = await axios.get('https://flixxit-h9fa.onrender.com/api/movies');
+                const response = await axios.get('/api/movies');
                 setMovies(response.data);
             } catch (err) {
                 console.error('Error fetching movies:', err);

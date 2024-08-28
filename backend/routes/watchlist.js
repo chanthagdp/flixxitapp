@@ -9,7 +9,7 @@ module.exports = (client, app, authenticate, ObjectId) => {
                 return res.status(400).json({ message: "Invalid user ID" });
             }
 
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const watchlist = database.collection('watchlist');
 
             // Find user's watchlist based on userId
@@ -38,7 +38,7 @@ module.exports = (client, app, authenticate, ObjectId) => {
         try {
             const { movieId } = req.body;
             const userId = req.user._id;
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const watchlist = database.collection('watchlist');
 
             // Ensure movieId is a valid ObjectId
@@ -68,7 +68,7 @@ module.exports = (client, app, authenticate, ObjectId) => {
                 return res.status(400).json({ message: "Invalid movie ID or user ID" });
             }
 
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
 
             const result = await database.collection('watchlist').deleteOne({
                 userId: new ObjectId(userId),

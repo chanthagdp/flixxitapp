@@ -27,7 +27,7 @@ const MovieList = ({ movies, type }) => {
       }
 
       const response = await axios.post(
-        'https://flixxit-h9fa.onrender.com/api/watchlist',
+        '/api/watchlist',
         { movieId },
         {
           headers: {
@@ -50,7 +50,7 @@ const MovieList = ({ movies, type }) => {
       navigator.share({
         title: `Check out this movie: ${title}`,
         text: `I found this interesting movie titled "${title}". You can check it out here:`,
-        url: `https://flixxit-h9fa.onrender.com/movies/${id}`,
+        url: `/movies/${id}`,
       })
         .then(() => console.log('Successfully shared'))
         .catch((error) => console.error('Error sharing:', error));

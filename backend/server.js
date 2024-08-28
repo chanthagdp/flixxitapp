@@ -30,7 +30,7 @@ const authenticate = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, 'secretkey');
-    const database = client.db('sample_mflix');
+    const database = client.db('auppFlixxitDb');
     const users = database.collection('users');
     const user = await users.findOne({ _id: new ObjectId(decoded._id) });
 
@@ -60,7 +60,7 @@ async function run() {
     await client.connect();
     console.log("Connected to the database");
 
-    const database = client.db("sample_mflix");
+    const database = client.db("auppFlixxitDb");
     const movies = database.collection("movies");
     const users = database.collection("users");
     console.log("Collections initialized");

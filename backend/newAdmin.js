@@ -14,7 +14,7 @@ async function addAdmin() {
         await client.connect();
 
         // Access the database
-        const database = client.db('sample_mflix');
+        const database = client.db('auppFlixxitDb');
 
         // Access the admins collection (create it if it doesn't exist)
         const admins = database.collection('admins');

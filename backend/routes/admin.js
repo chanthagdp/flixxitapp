@@ -5,7 +5,7 @@ module.exports = (client, app, bcrypt) => {
     app.post('/api/admin/login', async (req, res) => {
         try {
             const { email, password } = req.body;
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const admins = database.collection("admins");
 
             if (!email || !password) {
@@ -35,7 +35,7 @@ module.exports = (client, app, bcrypt) => {
         try {
             const { email, newPassword } = req.body;
 
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const admins = database.collection("admins");
 
             if (!email || !newPassword) {

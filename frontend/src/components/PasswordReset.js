@@ -17,7 +17,7 @@ const PasswordReset = () => {
         }
 
         try {
-            const response = await axios.post('https://flixxit-h9fa.onrender.com/api/reset-password', {
+            const response = await axios.post('/api/reset-password', {
                 email,
                 newPassword,
             });

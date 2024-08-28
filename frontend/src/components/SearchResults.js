@@ -13,7 +13,7 @@ const SearchResults = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://flixxit-h9fa.onrender.com/api/search', {
+        const response = await axios.get('/api/search', {
           params: { query }
         });
         setMovies(response.data);

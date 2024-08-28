@@ -6,7 +6,7 @@ async function createGenreCollection() {
 
     try {
         await client.connect();
-        const database = client.db('sample_mflix');
+        const database = client.db('auppFlixxitDb');
         const genres = database.collection('genres');
 
         const sampleGenres = [

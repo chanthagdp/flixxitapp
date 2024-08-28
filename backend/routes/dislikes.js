@@ -3,7 +3,7 @@ module.exports = (client, app, ObjectId) => {
     // Dislikes
     app.post("/api/dislike", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const movies = database.collection("movies");
             const dislikes = database.collection("dislikes");
             const { userId, movieId } = req.body;
@@ -41,7 +41,7 @@ module.exports = (client, app, ObjectId) => {
 
     app.get("/api/movies/:id/dislikes", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const dislikes = database.collection("dislikes");
             const { id } = req.params;
 
@@ -56,7 +56,7 @@ module.exports = (client, app, ObjectId) => {
     app.delete("/api/movies/:id/dislikes/:userId", async (req, res) => {
         try {
             const { id, userId } = req.params;
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const dislikes = database.collection("dislikes");
 
             // Delete the dislike entry associated with the user and movie

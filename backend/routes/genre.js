@@ -2,7 +2,7 @@ module.exports = (client, app) => {
     // Get all genres
     app.get("/api/genres", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const genres = database.collection("genres");
             const allGenres = await genres.find().toArray();
             res.json(allGenres);
@@ -16,7 +16,7 @@ module.exports = (client, app) => {
     app.get("/api/genres/:name", async (req, res) => {
         try {
             const { name } = req.params;
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const genres = database.collection("genres");
             const genre = await genres.findOne({ name: name });
             if (!genre) {
@@ -37,7 +37,7 @@ module.exports = (client, app) => {
             const { name } = req.body;
 
             // Check if genre with the same name already exists
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const genres = database.collection("genres");
             const existingGenre = await genres.findOne({ name });
             if (existingGenre) {
@@ -60,7 +60,7 @@ module.exports = (client, app) => {
             const { name } = req.body;
 
             // Check if genre with the given ID exists
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const genres = database.collection("genres");
             const existingGenre = await genres.findOne({ _id: new ObjectId(id) });
             if (!existingGenre) {
@@ -82,7 +82,7 @@ module.exports = (client, app) => {
             const { id } = req.params;
 
             // Check if genre with the given ID exists
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const genres = database.collection("genres");
             const existingGenre = await genres.findOne({ _id: new ObjectId(id) });
             if (!existingGenre) {

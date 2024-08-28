@@ -3,7 +3,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
     app.post("/api/register", async (req, res) => {
         try {
             // Check if email already exists
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const existingEmail = await users.findOne({ email: req.body.email });
             if (existingEmail) {
@@ -44,7 +44,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
 
     app.post("/api/login", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const user = await users.findOne({ email: req.body.email });
             if (!user) {
@@ -78,7 +78,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
             }
 
             // Find the user by email
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const user = await users.findOne({ email });
 
@@ -107,7 +107,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
     //get user data
     app.get("/api/user/:id", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const user = await users.findOne({ _id: ObjectId(req.params.id) });
             if (!user) {
@@ -122,7 +122,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
 
     // Endpoint to fetch user details based on userId
     app.get('/api/users/:userId', (req, res) => {
-        const database = client.db("sample_mflix");
+        const database = client.db("auppFlixxitDb");
         const users = database.collection("users");
 
         const userId = req.params.userId;
@@ -136,7 +136,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
 
     app.get("/api/user", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const token = req.header("Authorization").split(" ")[1]; // Extract token from Authorization header
             const user = await users.findOne({ _id: ObjectId(token) });
@@ -151,7 +151,7 @@ module.exports = (client, app, authenticate, bcrypt, jwt) => {
 
     app.get("/api/users", async (req, res) => {
         try {
-            const database = client.db("sample_mflix");
+            const database = client.db("auppFlixxitDb");
             const users = database.collection("users");
             const allUsers = await users.find().toArray();
             res.json(allUsers);

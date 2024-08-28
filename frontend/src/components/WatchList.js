@@ -32,7 +32,7 @@ const Watchlist = () => {
                     return;
                 }
 
-                const response = await axios.get(`https://flixxit-h9fa.onrender.com/api/watchlist/${userId}`, {
+                const response = await axios.get(`/api/watchlist/${userId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -71,7 +71,7 @@ const Watchlist = () => {
                 return;
             }
 
-            await axios.delete(`https://flixxit-h9fa.onrender.com/api/watchlist/${movieId}/${userId}`, {
+            await axios.delete(`/api/watchlist/${movieId}/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

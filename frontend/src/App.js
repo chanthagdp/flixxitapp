@@ -5,8 +5,10 @@ import AllRouters from "./AllRouters";
 import { AuthContext } from './AuthContext';
 import { clearCache } from "./utils/helpers";
 import { ThemeProvider } from './themeContext';
+import init from "./utils/init";
 
 const App = () => {
+  init();
   const [token, setToken] = useState(localStorage.getItem("flixxItToken") || "");
   const navigate = useNavigate();
   const [error, setError] = useState(null)
@@ -26,7 +28,7 @@ const App = () => {
       };
 
       const response = await axios.get(
-        `https://flixxit-h9fa.onrender.com/api/user/${userData.id}`,
+        `/api/user/${userData.id}`,
         { headers }
       );
 
@@ -52,7 +54,7 @@ const App = () => {
 
   const handleRegister = async (username, email, password) => {
     try {
-      const response = await axios.post("https://flixxit-h9fa.onrender.com/api/register", {
+      const response = await axios.post("/api/register", {
         username,
         email,
         password,
@@ -70,7 +72,7 @@ const App = () => {
     clearCache();  // Clear cache before login
     try {
       const response = await axios.post(
-        "https://flixxit-h9fa.onrender.com/api/login",
+        "/api/login",
         { email, password }
       );
       const data = response.data;
@@ -97,7 +99,7 @@ const App = () => {
 
   const handleLike = async (movieId, userId) => {
     try {
-      const response = await axios.post("https://flixxit-h9fa.onrender.com/api/like", {
+      const response = await axios.post("/api/like", {
         movieId: movieId,
         userId: userId
       });
@@ -114,7 +116,7 @@ const App = () => {
       if (!user) {
         throw new Error("User not logged in");
       }
-      const response = await axios.post("https://flixxit-h9fa.onrender.com/api/dislike", {
+      const response = await axios.post("/api/dislike", {
         userId: user._id,
         movieId,
       });

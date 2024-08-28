@@ -16,7 +16,7 @@ const AdminLogin = () => {
         setError(''); // Clear previous errors
 
         try {
-            const response = await axios.post('https://flixxit-h9fa.onrender.com/api/admin/login', { email, password });
+            const response = await axios.post('/api/admin/login', { email, password });
 
             if (response.data.success) {
                 navigate('/admin/dashboard');
@@ -37,7 +37,7 @@ const AdminLogin = () => {
         setError(''); // Clear previous errors
 
         try {
-            const response = await axios.post('https://flixxit-h9fa.onrender.com/api/admin/change-password', {
+            const response = await axios.post('/api/admin/change-password', {
                 email: forgotPasswordEmail,
                 newPassword,
             });

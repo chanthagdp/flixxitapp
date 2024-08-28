@@ -29,7 +29,7 @@ const RegisterForm = ({ handleRegister }) => {
             <div className="col-lg-6 mb-5 mb-lg-0">
               <div className="card">
                 <div className="card-body py-5 px-md-5">
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} autoComplete="off">
 
                     <div className="row">
                       <div className="col-md-6 mb-4">

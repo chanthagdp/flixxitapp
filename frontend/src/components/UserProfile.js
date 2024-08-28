@@ -35,7 +35,7 @@ const UserProfile = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get("https://flixxit-h9fa.onrender.com/api/movies");
+        const response = await axios.get("/api/movies");
         setMovies(response.data);
       } catch (err) {
         console.error("Error fetching movies:", err);
@@ -60,7 +60,7 @@ const UserProfile = () => {
           const user = getUser();
           if (!user) return;
 
-          const response = await axios.get("https://flixxit-h9fa.onrender.com/api/subscription-status", {
+          const response = await axios.get("/api/subscription-status", {
             params: { userId: user._id },
           });
 
@@ -98,8 +98,8 @@ const UserProfile = () => {
     const fetchMustWatchMovies = async () => {
       try {
         const response = genre
-          ? await axios.get(`https://flixxit-h9fa.onrender.com/api/movies/genre/${genre}`)
-          : await axios.get("https://flixxit-h9fa.onrender.com/api/movies");
+          ? await axios.get(`/api/movies/genre/${genre}`)
+          : await axios.get("/api/movies");
         setMustWatchMovies(response.data.slice(0, 4));
       } catch (error) {
         console.error("Failed to fetch must-watch movies:", error);
@@ -110,7 +110,7 @@ const UserProfile = () => {
 
   const handleSubscribe = async (subscriptionType) => {
     try {
-      const response = await axios.post("https://flixxit-h9fa.onrender.com/api/subscribe", {
+      const response = await axios.post("/api/subscribe", {
         userId: user._id,
         subscriptionType,
       });
@@ -147,7 +147,7 @@ const UserProfile = () => {
 
   const handleSaveGenre = async () => {
     try {
-      const response = await axios.post("https://flixxit-h9fa.onrender.com/api/set-preferred-genre", {
+      const response = await axios.post("/api/set-preferred-genre", {
         userId: user._id,
         genre,
       });

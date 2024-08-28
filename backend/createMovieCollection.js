@@ -1,12 +1,13 @@
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb+srv://devnimoh:INM8mbnUneU1mGFu@cluster0.inrpjl1.mongodb.net/sample_mflix?retryWrites=true&w=majority";
+// const uri = "mongodb+srv://myMongooseDb:Mailforcreateaccount@cluster0.pythelk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 async function createMovieCollection() {
     try {
         await client.connect();
-        const database = client.db("sample_mflix");
+        const database = client.db("auppFlixxitDb");
         const movies = database.collection("movies");
 
         const newMovies = [

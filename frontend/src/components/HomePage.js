@@ -15,7 +15,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await axios.get('https://flixxit-h9fa.onrender.com/api/movies');
+                const response = await axios.get('/api/movies');
                 const movies = response.data;
 
                 const newArrivals = [...movies].sort((a, b) => b._id.localeCompare(a._id));
